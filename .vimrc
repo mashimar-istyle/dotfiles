@@ -62,7 +62,7 @@ function! MyFugitive()
 endfunction
 
 function! MyFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
+    return winwidth(0) > 70 ? &fileformat : ''
 endfunction
 
 function! MyFiletype()
@@ -70,11 +70,11 @@ function! MyFiletype()
 endfunction
 
 function! MyFileencoding()
-      return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
 endfunction
   
 function! MyMode()
-        return winwidth(0) > 60 ? lightline#mode() : ''
+    return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction') 
 
 
@@ -108,6 +108,8 @@ function! s:my_cr_function()
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" 補完候補が表示されている場合は確定、そうでない場合は改行
+inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "<CR>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_pop""()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
@@ -130,6 +132,9 @@ NeoBundleCheck
 "   End NeoBundle Settings
 "--------------------------------------
 
+
+set lazyredraw
+set ttyfast
 set number
 set encoding=utf-8
 set fileencodings=utf-8
@@ -156,7 +161,7 @@ set laststatus=2
 set noswapfile
 set mouse=a
 set imdisable
-"set cursorline
+set incsearch
 set ic
 hi link htmlLink Comment
 
