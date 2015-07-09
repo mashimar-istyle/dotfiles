@@ -13,11 +13,21 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'tpope/vim-fugitive'
-
 NeoBundle 'itchyny/lightline.vim'
 
+
+" VimProc
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \ 'windows' : 'make -f make_mingw32.mak',
+      \ 'cygwin' : 'make -f make_cygwin.mak',
+      \ 'mac' : 'make -f make_mac.mak',
+      \ 'unix' : 'make -f make_unix.mak',
+      \ },
+      \ }
+
+
 let g:lightline = {
-        \ 'colorscheme': 'wombat',
         \ 'mode_map': {'c': 'NORMAL'},
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
@@ -121,6 +131,7 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 "autocmd BufRead *.php\|*.ctp\|*.tp| :set
 "set dictionary=~/.vim/dictionaries/php.dict filetype=php
 
+
 call neobundle#end()
 
 " Required:
@@ -132,7 +143,7 @@ NeoBundleCheck
 "   End NeoBundle Settings
 "--------------------------------------
 
-
+set title
 set lazyredraw
 set ttyfast
 set number
@@ -156,7 +167,7 @@ set t_Co=256
 set background=dark
 set softtabstop=4
 set showmatch
-set matchtime=2
+set matchtime=1
 set laststatus=2
 set noswapfile
 set mouse=a
