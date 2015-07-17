@@ -14,7 +14,17 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'xsbeats/vim-blade'
+NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
 
+" indentline
+let g:indentLine_color_term =238
+let g:indentLine_color_gui = '#708090'
+let g:indentLine_char = '' "use ¦, ┆ or |
 
 " VimProc
 NeoBundle 'Shougo/vimproc', {
@@ -40,8 +50,8 @@ let g:lightline = {
         \   'fileformat': 'MyFileformat',
         \   'filetype': 'MyFiletype',
         \   'fileencoding': 'MyFileencoding',
-        \   'mode': 'MyMode'
-        \ }
+        \   'mode': 'MyMode',
+        \ },
         \ }
 
 function! MyModified()
@@ -137,12 +147,16 @@ call neobundle#end()
 " Required:
 filetype plugin indent on
 
+" markdown
+au BufRead,BufNewFile *.md set filetype=markdown
+
 NeoBundleCheck
 
 "--------------------------------------
 "   End NeoBundle Settings
 "--------------------------------------
 
+"default settings"
 set title
 set lazyredraw
 set ttyfast
@@ -173,6 +187,8 @@ set noswapfile
 set mouse=a
 set imdisable
 set incsearch
+set list
+set listchars=tab:»-
 set ic
 hi link htmlLink Comment
 
